@@ -4,10 +4,10 @@ import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Public Pages
-import LandingPage from './pages/public/LandingPage';
-import LoginPage from './pages/public/LoginPage';
-import PublicRegisterPage from './pages/public/PublicRegisterPage';
-import CategoriesPage from './pages/public/CategoriesPage';
+import LandingPage from './pages/views/LandingPage';
+import LoginPage from './pages/views/LoginPage';
+import PublicRegisterPage from './pages/views/PublicRegisterPage';
+import CategoriesPage from './pages/views/CategoriesPage';
 
 // Protected Dashboards
 import AdminPage from './pages/admin/AdminPage';
