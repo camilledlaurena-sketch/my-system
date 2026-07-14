@@ -33,9 +33,9 @@ const navConfig = {
     { code: "Code C", documents: ["Document 1", "Document 2", "Document 3"] }
   ],
 contactUs: {
-    address: "Address: TBD",
-    phone: "Phone: TBD",
-    email: "Email: TBD"
+    address: "Address: Naic, Cavite",
+    phone: "Phone: 0912-345-6789",
+    email: "Email: mswd@gmail.com"
   }
 };
 
