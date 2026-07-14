@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../../firebase'; 
 import { useAuth } from '../../context/AuthContext';
-import heroVideo from '../../vids/soloparent.mp4';
+//import heroVideo from '../../vids/soloparent.mp4';
 
 // ==========================================
 // FRONT PAGE NAV CONFIGURATION DATA (PLACEHOLDERS)
