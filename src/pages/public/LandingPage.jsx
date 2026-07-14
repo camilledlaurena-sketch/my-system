@@ -44,7 +44,7 @@ contactUs: {
 // ==========================================
 const heroConfig = {
   videoSrc: heroVideo, 
-  posterImg: "/images/soloparent-poster.jpg",
+  posterImg: "/vids/soloparent-logo.png",
   title: "Empowering Solo Parents",
   subtitle: "Support. Benefits. Community. All here for you."
 };
