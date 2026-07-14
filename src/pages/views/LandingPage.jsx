@@ -43,7 +43,12 @@ contactUs: {
 // FRONT PAGE HERO CONFIGURATION DATA
 // ==========================================
 const heroConfig = {
-  videoSrc: "/vids/soloparent.mp4", 
+  backgroundImg: [
+    "/vids/pic1.jpg",
+    "/vids/pic2.jpg",
+    "/vids/pic3.jpg",
+    "/vids/pic4.jpg"
+  ],
   posterImg: "/vids/soloparent-logo.png",
   title: "Empowering Solo Parents",
   subtitle: "Support. Benefits. Community. All here for you."
@@ -55,6 +60,14 @@ const heroConfig = {
 function LandingPage() {
   const navigate = useNavigate();
   const { userRole, userData } = useAuth(); 
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroConfig.backgroundImages.length);
+  }, 4000); // 4 seconds bawat image
+  return () => clearInterval(interval);
+}, []);
 
   const [showDropdown, setShowDropdown] = useState(null);
   const [expandedCode, setExpandedCode] = useState(null);
@@ -289,16 +302,21 @@ return (
       </header>
       
       <main style={{ position: 'relative', flex: 1, display: 'flex', overflow: 'hidden' }}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={heroConfig.posterImg}
-          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
-        >
-          <source src={heroConfig.videoSrc} type="video/mp4" />
-        </video>
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+  {heroConfig.backgroundImages.map((img, index) => (
+    <img 
+      key={index}
+      src={img}
+      alt={`Slide ${index + 1}`}
+      style={{ 
+        position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', 
+        objectFit: 'cover',
+        opacity: index === currentSlide ? 1 : 0,
+        transition: 'opacity 1s ease-in-out'
+      }}
+    />
+  ))}
+</div>
         
         <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(30, 58, 138, 0.7)', zIndex: 1 }}></div>
 
