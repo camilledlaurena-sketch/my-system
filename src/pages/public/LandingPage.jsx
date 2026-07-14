@@ -152,9 +152,12 @@ return (
       `}</style>
       <header style={styles.header} onClick={(e) => e.stopPropagation()}>
         <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center'}}>
-          <h1 style={styles.logoTitle}>
-            <span style={{background: '#e2e8f0', borderRadius: '4px', padding: '0 8px'}}>🖼️</span> Solo Parent Support System
-          </h1>
+        <h1 style={styles.logoTitle}>
+          <img 
+            src={heroConfig.posterImg} 
+            alt="Solo Parent Logo"
+            style={{ width: '50px', height: '50px', borderRadius: '8px', objectFit: 'cover' }}/>Solo Parent Support System
+        </h1>
           <button 
             className="mobile-toggle-btn" 
             style={styles.mobileMenuBtn} 
