@@ -43,7 +43,7 @@ contactUs: {
 // FRONT PAGE HERO CONFIGURATION DATA
 // ==========================================
 const heroConfig = {
-  videoSrc: heroVideo, 
+  videoSrc: "/vids/soloparent.mp4", 
   posterImg: "/vids/soloparent-logo.png",
   title: "Empowering Solo Parents",
   subtitle: "Support. Benefits. Community. All here for you."
