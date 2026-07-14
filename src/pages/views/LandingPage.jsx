@@ -43,7 +43,7 @@ contactUs: {
 // FRONT PAGE HERO CONFIGURATION DATA
 // ==========================================
 const heroConfig = {
-  backgroundImg: [
+  backgroundImages: [
     "/vids/pic1.jpg",
     "/vids/pic2.jpg",
     "/vids/pic3.jpg",
