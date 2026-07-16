@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../../firebase'; 
 import { useAuth } from '../../context/AuthContext';
-//import heroVideo from '../../vids/soloparent.mp4';
 
 // ==========================================
 // FRONT PAGE NAV CONFIGURATION DATA (PLACEHOLDERS)
@@ -20,12 +19,6 @@ const navConfig = {
     ],
     techSolutions: { title: "Tech Solutions", textPlaceholder: "Tech Solutions content will be placed here." }
   },
-  newsAndEvents: {
-    events: [
-      { title: "Event Title", date: "Date: TBD", details: "Details coming soon." }
-    ]
-  },
-  eServices: ["Service 1", "Service 2", "Service 3"],
   programsAndServices: ["Program 1", "Program 2", "Program 3"],
   categoriesAndCodes: [
     { code: "Code A", documents: ["Document 1", "Document 2", "Document 3"] },
@@ -124,11 +117,12 @@ useEffect(() => {
 
 const styles = {
     body: { fontFamily: 'Arial, sans-serif', background: '#ffffff', height: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden', overflowY: 'auto' },
-    header: { background: '#ffffff', padding: '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', borderBottom: '4px solid #fbbf24', position: 'relative', zIndex: 10, flexWrap: 'wrap' },
+    header: { background: '#ffffff', padding: '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', 
+    boxShadow: '0 4px 10px rgba(0,0,0,0.05)', borderBottom: '4px solid #fbbf24', position: 'relative', zIndex: 10, flexWrap: 'wrap', flexDirection: 'row' },
     logoTitle: { color: '#1e3a8a', margin: 0, fontSize: '24px', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '10px', minWidth: 'max-content' },
-    navContainer: { display: isMobileMenuOpen ? 'flex' : 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', flex: 1, padding: '0 20px' },
+    navContainer: { display: 'flex', gap: '35px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', flex: 1, flexDirection: 'row' },
     mobileMenuBtn: { display: 'none', background: 'none', border: 'none', fontSize: '28px', cursor: 'pointer', color: '#1e3a8a' },
-    navItem: { position: 'relative', cursor: 'pointer', color: '#1e3a8a', fontWeight: 'bold', fontSize: '14px', padding: '10px 0', userSelect: 'none' },
+    navItem: { position: 'relative', cursor: 'pointer', color: '#1e3a8a', fontWeight: 'bold', fontSize: '14px', padding: '10px 12px', userSelect: 'none' },
     dropdownMenu: { position: 'absolute', top: '100%', left: '0', background: '#1e3a8a', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', padding: '10px 0', minWidth: '220px', display: 'flex', flexDirection: 'column', textAlign: 'left', zIndex: 20 },
     dropdownMenuRight: { position: 'absolute', top: '100%', right: '0', background: '#1e3a8a', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', padding: '10px 0', minWidth: '300px', display: 'flex', flexDirection: 'column', textAlign: 'left', zIndex: 20 },
     dropdownSection: { padding: '15px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)', color: '#ffffff' },
@@ -152,12 +146,10 @@ const styles = {
 return (
     <div style={styles.body} className="anim-fade-in landing-page-wrapper" onClick={() => setShowDropdown(null)}>
       <style>{`
-        @media (max-width: 900px) {
-          .mobile-nav-container { display: ${isMobileMenuOpen ? 'flex' : 'none'} !important; flex-direction: column; width: 100%; align-items: flex-start !important; margin-top: 15px; }
-          .mobile-toggle-btn { display: block !important; }
+        @media (max-width: 900px) { 
+          header { flex-direction: row !important; padding: 10px 15px !important; justify-content: center !important; flex-wrap: wrap !important; gap: 10px !important }
           .nav-item-dropdown { position: static !important; width: 100% !important; min-width: 100% !important; }
-        }
-        .hover-underline-link:hover { text-decoration: underline !important; }
+          .hover-underline-link:hover { text-decoration: underline !important; }
         
         /* Hide the scrollbar exclusively for the Landing Page wrapper */
         .landing-page-wrapper::-webkit-scrollbar { display: none; }
@@ -222,32 +214,6 @@ return (
             )}
           </div>
 
-          <div style={styles.navItem} onClick={() => toggleDropdown('news')}>
-            News & Events
-            {showDropdown === 'news' && (
-              <div style={styles.dropdownMenu} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
-                {navConfig.newsAndEvents.events.map((ev, i) => (
-                  <div key={i} style={styles.eventCard}>
-                    <strong>{ev.title}</strong>
-                    <div style={{fontSize:'12px', color:'#cbd5e1', marginTop:'5px'}}>{ev.date}</div>
-                    <p style={{fontSize:'12px', margin:'5px 0 0'}}>{ev.details}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div style={styles.navItem} onClick={() => toggleDropdown('eservices')}>
-            e-Services ▼
-            {showDropdown === 'eservices' && (
-              <div style={styles.dropdownMenu} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
-                {navConfig.eServices.map((service, i) => (
-                  <div key={i} style={styles.dropdownItem}>{service}</div>
-                ))}
-              </div>
-            )}
-          </div>
-          
           <div style={styles.navItem} onClick={() => toggleDropdown('programs')}>
             Programs and Services ▼
             {showDropdown === 'programs' && (
@@ -318,8 +284,6 @@ return (
   ))}
 </div>
         
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(30, 58, 138, 0.7)', zIndex: 1 }}></div>
-
         <div style={{ position: 'relative', zIndex: 2, width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '0 5%' }}>
           <div style={{ background: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255, 255, 255, 0.3)', padding: '40px', borderRadius: '16px', maxWidth: '450px', width: '100%', color: '#ffffff', boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)' }}>
             <h2 style={{ fontSize: '36px', fontWeight: '900', margin: '0 0 15px 0', lineHeight: '1.2', textShadow: '1px 1px 4px rgba(0,0,0,0.4)' }}>{heroConfig.title}</h2>
