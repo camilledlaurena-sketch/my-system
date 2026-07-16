@@ -29,8 +29,8 @@ const navConfig = {
   ],
   contactUs: {
     address: "Address: Naic, Cavite",
-    phone: "Phone: 0912-345-6789",
-    email: "Email: mswd@gmail.com"
+    phone: "Phone: (046) 890 2435",
+    email: "Email: dswdnaiccavite@yahoo.com"
   }
 };
 
