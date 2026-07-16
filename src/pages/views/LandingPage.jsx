@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '../../firebase'; 
+import { auth } from '../../firebase';
 import { useAuth } from '../../context/AuthContext';
 
 // ==========================================
@@ -25,7 +25,7 @@ const navConfig = {
     { code: "Code B", documents: ["Document 1", "Document 2", "Document 3"] },
     { code: "Code C", documents: ["Document 1", "Document 2", "Document 3"] }
   ],
-contactUs: {
+  contactUs: {
     address: "Address: Naic, Cavite",
     phone: "Phone: 0912-345-6789",
     email: "Email: mswd@gmail.com"
@@ -43,8 +43,8 @@ const heroConfig = {
     "/vids/pic4.jpg"
   ],
   posterImg: "/vids/soloparent-logo.png",
-  title: "Empowering Solo Parents",
-  subtitle: "Support. Benefits. Community. All here for you."
+  title: "",
+  subtitle: ""
 };
 
 // ==========================================
@@ -52,15 +52,15 @@ const heroConfig = {
 // ==========================================
 function LandingPage() {
   const navigate = useNavigate();
-  const { userRole, userData } = useAuth(); 
+  const { userRole, userData } = useAuth();
   const [currentSlide, setCurrentSlide] = useState(0);
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    setCurrentSlide((prev) => (prev + 1) % heroConfig.backgroundImages.length);
-  }, 4000); // 4 seconds bawat image
-  return () => clearInterval(interval);
-}, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroConfig.backgroundImages.length);
+    }, 4000); // 4 seconds bawat image
+    return () => clearInterval(interval);
+  }, []);
 
   const [showDropdown, setShowDropdown] = useState(null);
   const [expandedCode, setExpandedCode] = useState(null);
@@ -71,6 +71,7 @@ useEffect(() => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
 
   // Securely redirect based on AuthContext state
   useEffect(() => {
@@ -115,10 +116,12 @@ useEffect(() => {
     }
   };
 
-const styles = {
+  const styles = {
     body: { fontFamily: 'Arial, sans-serif', background: '#ffffff', height: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden', overflowY: 'auto' },
-    header: { background: '#ffffff', padding: '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', 
-    boxShadow: '0 4px 10px rgba(0,0,0,0.05)', borderBottom: '4px solid #fbbf24', position: 'relative', zIndex: 10, flexWrap: 'wrap', flexDirection: 'row' },
+    header: {
+      background: '#ffffff', padding: '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+      boxShadow: '0 4px 10px rgba(0,0,0,0.05)', borderBottom: '4px solid #fbbf24', position: 'relative', zIndex: 10, flexWrap: 'wrap', flexDirection: 'row'
+    },
     logoTitle: { color: '#1e3a8a', margin: 0, fontSize: '24px', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '10px', minWidth: 'max-content' },
     navContainer: { display: 'flex', gap: '35px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', flex: 1, flexDirection: 'row' },
     mobileMenuBtn: { display: 'none', background: 'none', border: 'none', fontSize: '28px', cursor: 'pointer', color: '#1e3a8a' },
@@ -143,7 +146,7 @@ const styles = {
     infoBox: { background: '#f8fafc', padding: '20px', borderRadius: '12px', borderLeft: '5px solid #fbbf24', margin: '10px', textAlign: 'left', color: '#334155', fontSize: '14px', lineHeight: '1.6' }
   };
 
-return (
+  return (
     <div style={styles.body} className="anim-fade-in landing-page-wrapper" onClick={() => setShowDropdown(null)}>
       <style>{`
         @media (max-width: 900px) { 
@@ -156,25 +159,29 @@ return (
         .landing-page-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
       <header style={styles.header} onClick={(e) => e.stopPropagation()}>
-        <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center'}}>
-        <h1 style={styles.logoTitle}>
-          <img 
-            src={heroConfig.posterImg} 
-            alt="Solo Parent Logo"
-            style={{ width: '50px', height: '50px', borderRadius: '8px', objectFit: 'cover' }}/>Solo Parent Support System
-        </h1>
-          <button 
-            className="mobile-toggle-btn" 
-            style={styles.mobileMenuBtn} 
+        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+          <h1 style={styles.logoTitle}>
+            <img
+              src={heroConfig.posterImg}
+              alt="Solo Parent Logo"
+              style={{ width: '50px', height: '50px', borderRadius: '8px', objectFit: 'cover' }} />Solo Parent Support System
+          </h1>
+          <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+            <span onClick={() => setShowLoginModal(true)} style={{ cursor: 'pointer', color: '#1e3a8a', fontWeight: 600, fontSize: '15px' }}>Login</span>
+            <span onClick={() => setShowRegisterModal(true)} style={{ cursor: 'pointer', color: '#1e3a8a', fontWeight: 600, fontSize: '15px' }}>Register</span>
+          </div>
+          <button
+            className="mobile-toggle-btn"
+            style={styles.mobileMenuBtn}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             ☰
           </button>
         </div>
-        
+
         <nav style={styles.navContainer} className="mobile-nav-container">
           <div style={styles.navItem} onClick={() => navigate('/')}>Home</div>
-          
+
           <div style={styles.navItem} onClick={() => toggleDropdown('about')}>
             About Us ▼
             {showDropdown === 'about' && (
@@ -190,7 +197,7 @@ return (
               </div>
             )}
           </div>
-          
+
           <div style={styles.navItem} onClick={() => toggleDropdown('innov')}>
             Innovations ▼
             {showDropdown === 'innov' && (
@@ -200,8 +207,8 @@ return (
                   <div style={styles.cardContainer}>
                     {navConfig.innovations.recentProjects.map((proj, i) => (
                       <div key={i} style={styles.imageCardPlaceholder}>
-                        <strong style={{color:'#1e3a8a'}}>{proj.title}</strong>
-                        <p style={{fontSize:'12px', margin:'5px 0 0'}}>{proj.desc}</p>
+                        <strong style={{ color: '#1e3a8a' }}>{proj.title}</strong>
+                        <p style={{ fontSize: '12px', margin: '5px 0 0' }}>{proj.desc}</p>
                       </div>
                     ))}
                   </div>
@@ -224,24 +231,24 @@ return (
               </div>
             )}
           </div>
-          
+
           <div style={styles.navItem} onClick={() => toggleDropdown('categories')}>
             Categories and Codes ▼
             {showDropdown === 'categories' && (
               <div style={styles.dropdownMenuRight} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
                 {navConfig.categoriesAndCodes.map((cat, i) => (
-                  <div key={i} style={{...styles.dropdownItem, borderBottom: '1px solid rgba(255,255,255,0.1)'}}>
-                    <div 
-                      onClick={() => setExpandedCode(expandedCode === cat.code ? null : cat.code)} 
-                      style={{cursor:'pointer', fontWeight:'bold', display:'flex', justifyContent:'space-between'}}
+                  <div key={i} style={{ ...styles.dropdownItem, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div
+                      onClick={() => setExpandedCode(expandedCode === cat.code ? null : cat.code)}
+                      style={{ cursor: 'pointer', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between' }}
                     >
-                      {cat.code} <span style={{fontSize: '16px'}}>{expandedCode === cat.code ? '−' : '+'}</span>
+                      {cat.code} <span style={{ fontSize: '16px' }}>{expandedCode === cat.code ? '−' : '+'}</span>
                     </div>
                     {expandedCode === cat.code && (
                       <div style={styles.accordionContent}>
-                        <div style={{fontSize:'12px', marginBottom:'5px', color:'#fbbf24', fontWeight:'bold'}}>Required Documents:</div>
+                        <div style={{ fontSize: '12px', marginBottom: '5px', color: '#fbbf24', fontWeight: 'bold' }}>Required Documents:</div>
                         {cat.documents.map((doc, j) => (
-                          <div key={j} style={{fontSize:'12px', marginLeft:'10px', marginBottom:'4px'}}>• {doc}</div>
+                          <div key={j} style={{ fontSize: '12px', marginLeft: '10px', marginBottom: '4px' }}>• {doc}</div>
                         ))}
                       </div>
                     )}
@@ -254,7 +261,7 @@ return (
           <div style={styles.navItem} onClick={() => toggleDropdown('contact')}>
             Contact Us
             {showDropdown === 'contact' && (
-              <div style={{...styles.dropdownMenuRight, minWidth: '200px'}} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
+              <div style={{ ...styles.dropdownMenuRight, minWidth: '200px' }} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
                 <div style={styles.dropdownSection}>
                   <strong>{navConfig.contactUs.address}</strong>
                   <p style={styles.placeholderText}>{navConfig.contactUs.phone}</p>
@@ -263,37 +270,29 @@ return (
               </div>
             )}
           </div>
+
         </nav>
 
       </header>
-      
+
       <main style={{ position: 'relative', flex: 1, display: 'flex', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
-  {heroConfig.backgroundImages.map((img, index) => (
-    <img 
-      key={index}
-      src={img}
-      alt={`Slide ${index + 1}`}
-      style={{ 
-        position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', 
-        objectFit: 'cover',
-        opacity: index === currentSlide ? 1 : 0,
-        transition: 'opacity 1s ease-in-out'
-      }}
-    />
-  ))}
-</div>
-        
-        <div style={{ position: 'relative', zIndex: 2, width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', padding: '0 5%' }}>
-          <div style={{ background: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255, 255, 255, 0.3)', padding: '40px', borderRadius: '16px', maxWidth: '450px', width: '100%', color: '#ffffff', boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)' }}>
-            <h2 style={{ fontSize: '36px', fontWeight: '900', margin: '0 0 15px 0', lineHeight: '1.2', textShadow: '1px 1px 4px rgba(0,0,0,0.4)' }}>{heroConfig.title}</h2>
-            <p style={{ fontSize: '18px', margin: '0 0 30px 0', lineHeight: '1.5', textShadow: '1px 1px 4px rgba(0,0,0,0.4)' }}>{heroConfig.subtitle}</p>
-            <div style={{ display: 'flex', gap: '15px' }}>
-              <button style={{ background: '#fbbf24', color: '#1e3a8a', padding: '15px 30px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', border: 'none', cursor: 'pointer', fontSize: '16px', flex: 1, textAlign: 'center' }} onClick={() => setShowLoginModal(true)} className="hover-btn">Login</button>
-              <button style={{ background: 'transparent', color: '#ffffff', padding: '15px 30px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', border: '2px solid #ffffff', cursor: 'pointer', fontSize: '16px', flex: 1, textAlign: 'center' }} onClick={() => navigate('/categories')} className="hover-btn">Register</button>
-            </div>
-          </div>
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+          {heroConfig.backgroundImages.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`Slide ${index + 1}`}
+              style={{
+                position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+                objectFit: 'cover',
+                opacity: index === currentSlide ? 1 : 0,
+                transition: 'opacity 1s ease-in-out'
+              }}
+            />
+          ))}
         </div>
+
+      
 
         {showLoginModal && (
           <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', zIndex: 100, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px' }} onClick={() => setShowLoginModal(false)}>
@@ -307,14 +306,14 @@ return (
                 <div style={{ marginBottom: '15px' }}>
                   <label style={{ display: 'block', marginBottom: '8px', color: '#1e3a8a', fontWeight: 'bold', fontSize: '14px' }}>Password</label>
                   <div style={{ position: 'relative' }}>
-                    <input 
-                      type={showPassword ? "text" : "password"} 
-                      style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', boxSizing: 'border-box', fontSize: '15px', background: '#f8fafc', paddingRight: '40px' }} 
-                      value={password} 
-                      onChange={(e) => setPassword(e.target.value)} 
-                      required 
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', boxSizing: 'border-box', fontSize: '15px', background: '#f8fafc', paddingRight: '40px' }}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
                     />
-                    <span 
+                    <span
                       onClick={() => setShowPassword(!showPassword)}
                       style={{ position: 'absolute', right: '12px', top: '10px', cursor: 'pointer', fontSize: '18px', userSelect: 'none' }}
                       title={showPassword ? "Hide Password" : "Show Password"}
@@ -322,8 +321,8 @@ return (
                       {showPassword ? '👁️' : '🔒'}
                     </span>
                   </div>
-                  <div 
-                    style={{ textAlign: 'right', marginTop: '8px', fontSize: '13px', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold' }} 
+                  <div
+                    style={{ textAlign: 'right', marginTop: '8px', fontSize: '13px', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold' }}
                     onClick={handleForgotPassword}
                   >
                     Forgot Password?
