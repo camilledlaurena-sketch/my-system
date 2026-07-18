@@ -508,64 +508,60 @@ function LandingPage() {
     <div style={styles.body} className="anim-fade-in landing-page-wrapper">
 
       <style>{`
-  @media (max-width: 768px) {
-    body {
-      overflow-x: hidden !important; /* para walang horizontal scroll */
-    }
+  
+  @media (max-width: 980px) {
+    body { overflow-x: hidden !important; }
 
-    /* HEADER */
-    header {
-      flex-direction: column !important;
-      padding: 10px 15px !important;
+    /* 1. HEADER - CENTER LAHAT */
+    header { 
+      flex-direction: column !important; 
+      padding: 15px 10px !important; 
       align-items: center !important;
-      gap: 10px !important;
+      gap: 12px !important;
+      text-align: center !important;
     }
+    header img { width: 60px !important; height: 60px !important; } /* palitin logo */
     header > div:last-child { 
       width: 100% !important; 
       justify-content: center !important; 
+      gap: 10px !important;
     }
 
-    /* NAVBAR */
+    /* 2. NAVBAR - GAWING 3 ROWS NA MAY GAP */
     nav {
       flex-wrap: wrap !important;
       justify-content: center !important;
-      padding: 8px 5px !important;
-      gap: 5px 15px !important;
+      padding: 10px 5px !important;
+      gap: 8px 20px !important;
     }
-    nav > div { font-size: 12px !important; padding: 5px 8px !important; }
+    nav > div { 
+      font-size: 13px !important; 
+      padding: 6px 10px !important; 
+      white-space: nowrap !important; /* para di maputol yung text */
+    }
 
-    /* DROPDOWN CATEGORIES */
+    /* 3. DROPDOWN - DAPAT NASA ILALIM NG NAV */
     .nav-item-dropdown { 
       position: fixed !important;
-      top: 120px !important;
+      top: 160px !important; /* binaba ko pa kasi 3 rows na nav */
       left: 0 !important;
       right: 0 !important;
-      width: 100vw !important;
-      min-width: 100vw !important;
-      max-width: 100vw !important;
+      width: 100% !important;
+      max-width: 100% !important;
       transform: none !important;
       border-radius: 0 !important;
       border-top: 3px solid #fbbf24;
       z-index: 9999 !important;
-      max-height: 70vh !important;
+      max-height: 60vh !important;
       overflow-y: auto !important;
     }
 
-    /* SLIDESHOW / BANNER PIC */
+    /* 4. SLIDESHOW/BANNER - FIT NA FIT */
     .landing-page-wrapper img {
       width: 100% !important;
-      height: auto !important;
-      max-height: 300px !important;
+      height: 220px !important; /* fixed height para di humaba */
       object-fit: cover !important;
-    }
-
-    /* HOME SECTIONS - para mag 1 column */
-    .home-section, .card-grid {
-      flex-direction: column !important;
-      padding: 15px 10px !important;
-    }
-    .home-section > div, .card {
-      width: 100% !important;
+      display: block !important;
     }
   }
 
@@ -573,7 +569,6 @@ function LandingPage() {
   .landing-page-wrapper::-webkit-scrollbar { display: none; }
   .landing-page-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
 `}</style>
-
       {/* ===== HEADER PUTI ===== */}
       <header style={{
         background: '#ffffff',
