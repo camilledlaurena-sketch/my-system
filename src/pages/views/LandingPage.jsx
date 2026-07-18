@@ -509,35 +509,20 @@ function LandingPage() {
 
       <style>{`
   @media (max-width: 768px) {
+    body {
+      overflow-x: hidden !important; /* para walang horizontal scroll */
+    }
+
     header { 
-      flex-direction: row !important; 
+      flex-direction: column !important; 
       padding: 10px 15px !important; 
-      justify-content: center !important; 
-      flex-wrap: wrap !important; 
+      align-items: center !important;
+      gap: 10px !important;
     }
-
-    /* ITO YUNG BAGO PARA SA CATEGORIES SA CP */
-    .nav-item-dropdown { 
-      position: fixed !important;
-      top: 60px !important;
-      left: 0 !important;
-      right: 0 !important;
-      width: 100vw !important;
-      min-width: 100vw !important;
-      max-width: 100vw !important;
-      transform: none !important;
-      border-radius: 0 !important;
-      border-top: 3px solid #fbbf24;
-      z-index: 9999 !important;
-      max-height: 80vh !important; /* para may scroll pag mahaba */
-      overflow-y: auto !important;
-    }
-
-    .hover-underline-link:hover { text-decoration: underline !important; }
+    
+    /* ... yung iba mong code ... */
   }
 
-  /* ITO YUNG LUMA MO - WAG BUBURAHIN */
-  /* Hide the scrollbar exclusively for the Landing Page wrapper */
   .landing-page-wrapper::-webkit-scrollbar { display: none; }
   .landing-page-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
 `}</style>
