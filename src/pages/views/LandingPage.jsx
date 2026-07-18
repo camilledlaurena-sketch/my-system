@@ -508,67 +508,63 @@ function LandingPage() {
     <div style={styles.body} className="anim-fade-in landing-page-wrapper">
 
 <style>{`
+  /* ===== MOBILE RESPONSIVE FIX ===== */
   @media (max-width: 980px) {
     body { overflow-x: hidden !important; }
-
-    /* HEADER - Pwersahan na to */
-    header, header[style] { 
+    
+    /* HEADER - gawing pababa */
+    .main-header { 
       flex-direction: column !important; 
-      padding: 15px 10px !important; 
+      padding: 15px 20px !important; 
       align-items: center !important;
       gap: 12px !important;
       text-align: center !important;
-      height: auto !important;
     }
-    header img { width: 70px !important; height: 70px !important; }
-    header > div:last-child { 
+    .main-header img { width: 70px !important; height: 70px !important; }
+    .main-header > div:last-child { 
       width: 100% !important; 
       justify-content: center !important; 
       gap: 10px !important;
     }
 
-    /* NAV - Pwersahan na din */
-    nav, nav[style] {
-      display: flex !important;
+    /* NAV - gawing wrap at center */
+    .main-nav {
       flex-wrap: wrap !important;
       justify-content: center !important;
       padding: 10px 5px !important;
       gap: 10px 15px !important;
-      height: auto !important;
+      height: auto !important; /* alisin yung 50px na fixed */
     }
-    nav > div, nav > div[style] { 
+    .main-nav .nav-item { 
       font-size: 13px !important; 
       padding: 6px 10px !important; 
       white-space: nowrap !important;
     }
 
-    /* DROPDOWN */
-    div[class*="dropdown"], .nav-item-dropdown { 
+    /* DROPDOWN - full width sa mobile */
+    .nav-item-dropdown { 
       position: fixed !important;
-      top: 170px !important;
+      top: 170px !important; /* baba ng header+nav */
       left: 0 !important;
-      width: 100vw !important;
-      max-width: 100vw !important;
-      transform: none !important;
+      width: 100% !important;
       border-radius: 0 !important;
       border-top: 3px solid #fbbf24 !important;
       z-index: 9999 !important;
+      max-height: 70vh !important;
+      overflow-y: auto !important;
     }
 
-    /* PICTURE/SLIDESHOW */
-    main img, .landing-page-wrapper img, img[style] {
+    /* BANNER - fit sa screen */
+    .banner-img {
       width: 100% !important;
-      height: 240px !important;
+      height: 240px !important; /* binaba ko para di humaba */
       object-fit: cover !important;
       display: block !important;
     }
   }
-
-  .landing-page-wrapper::-webkit-scrollbar { display: none; }
-  .landing-page-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
 `}</style>
       {/* ===== HEADER PUTI ===== */}
-      <header style={{
+      <header className="main-header" style={{
         background: '#ffffff',
         padding: '12px 60px',
         display: 'flex',
@@ -625,7 +621,7 @@ function LandingPage() {
         </div>
       </header>
 
-      <nav style={{
+      <nav className="main-nav" style={{
         background: 'linear-gradient(90deg, #1e40af 0%, #2563eb 100%)', /* DARK BLUE GAYA SA PIC MO */
         padding: '0 60px',
         display: 'flex',
@@ -637,11 +633,11 @@ function LandingPage() {
         zIndex: 50,
       }} onClick={() => setShowDropdown(null)}>
 
-        <div style={styles.navItemWhite} onClick={() => navigate('/')}>
+        <div className="nav-item" style={styles.navItemWhite} onClick={() => navigate('/')}>
           Home
         </div>
 
-        <div style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('about') }}>
+        <div className="nav-item" style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('about') }}>
           About Us ▼
           {showDropdown === 'about' && (
             <div style={styles.dropdownMenu} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
@@ -657,7 +653,7 @@ function LandingPage() {
           )}
         </div>
 
-        <div style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('innovations') }}>
+        <div className="nav-item" style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('innovations') }}>
           Innovations ▼
           {showDropdown === 'innovations' && (
             <div style={styles.dropdownMenu} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
@@ -680,7 +676,7 @@ function LandingPage() {
           )}
         </div>
 
-        <div style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('programs') }}>
+        <div className="nav-item" style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('programs') }}>
           Programs and Services ▼
           {showDropdown === 'programs' && (
             <div style={styles.dropdownMenu} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
@@ -691,7 +687,7 @@ function LandingPage() {
           )}
         </div>
 
-        <div style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('categories') }}>
+        <div className="nav-item" style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('categories') }}>
           Categories and Codes ▼
           {showDropdown === 'categories' && (
             <div style={styles.dropdownMenuRightWide} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
@@ -719,7 +715,7 @@ function LandingPage() {
           )}
         </div>
 
-        <div style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('contact') }}>
+        <div className="nav-item" style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('contact') }}>
           Contact Us ▼
           {showDropdown === 'contact' && (
             <div style={{ ...styles.dropdownMenuRight, minWidth: '200px' }} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
@@ -740,6 +736,7 @@ function LandingPage() {
           {heroConfig.backgroundImages.map((img, index) => (
             <img
               key={index}
+              className="banner-img"
               src={img}
               alt={`Slide ${index + 1}`}
               style={{
