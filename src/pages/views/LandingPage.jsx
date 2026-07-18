@@ -507,65 +507,63 @@ function LandingPage() {
   return (
     <div style={styles.body} className="anim-fade-in landing-page-wrapper">
 
-      <style>{`
-  
+<style>{`
   @media (max-width: 980px) {
     body { overflow-x: hidden !important; }
 
-    /* 1. HEADER - CENTER LAHAT */
-    header { 
+    /* HEADER - Pwersahan na to */
+    header, header[style] { 
       flex-direction: column !important; 
       padding: 15px 10px !important; 
       align-items: center !important;
       gap: 12px !important;
       text-align: center !important;
+      height: auto !important;
     }
-    header img { width: 60px !important; height: 60px !important; } /* palitin logo */
+    header img { width: 70px !important; height: 70px !important; }
     header > div:last-child { 
       width: 100% !important; 
       justify-content: center !important; 
       gap: 10px !important;
     }
 
-    /* 2. NAVBAR - GAWING 3 ROWS NA MAY GAP */
-    nav {
+    /* NAV - Pwersahan na din */
+    nav, nav[style] {
+      display: flex !important;
       flex-wrap: wrap !important;
       justify-content: center !important;
       padding: 10px 5px !important;
-      gap: 8px 20px !important;
+      gap: 10px 15px !important;
+      height: auto !important;
     }
-    nav > div { 
+    nav > div, nav > div[style] { 
       font-size: 13px !important; 
       padding: 6px 10px !important; 
-      white-space: nowrap !important; /* para di maputol yung text */
+      white-space: nowrap !important;
     }
 
-    /* 3. DROPDOWN - DAPAT NASA ILALIM NG NAV */
-    .nav-item-dropdown { 
+    /* DROPDOWN */
+    div[class*="dropdown"], .nav-item-dropdown { 
       position: fixed !important;
-      top: 160px !important; /* binaba ko pa kasi 3 rows na nav */
+      top: 170px !important;
       left: 0 !important;
-      right: 0 !important;
-      width: 100% !important;
-      max-width: 100% !important;
+      width: 100vw !important;
+      max-width: 100vw !important;
       transform: none !important;
       border-radius: 0 !important;
-      border-top: 3px solid #fbbf24;
+      border-top: 3px solid #fbbf24 !important;
       z-index: 9999 !important;
-      max-height: 60vh !important;
-      overflow-y: auto !important;
     }
 
-    /* 4. SLIDESHOW/BANNER - FIT NA FIT */
-    .landing-page-wrapper img {
+    /* PICTURE/SLIDESHOW */
+    main img, .landing-page-wrapper img, img[style] {
       width: 100% !important;
-      height: 220px !important; /* fixed height para di humaba */
+      height: 240px !important;
       object-fit: cover !important;
       display: block !important;
     }
   }
 
-  /* Hide scrollbar */
   .landing-page-wrapper::-webkit-scrollbar { display: none; }
   .landing-page-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
 `}</style>
