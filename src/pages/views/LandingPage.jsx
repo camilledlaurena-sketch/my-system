@@ -313,50 +313,50 @@ function LandingPage() {
       whiteSpace: 'normal'
     },
 
-    dropdownMenuRight: { 
-      position: 'absolute', 
-      top: '100%', 
-      right: '0', 
-      background: '#1e3a8a', 
-      borderRadius: '8px', 
-      boxShadow: '0 10px 25px rgba(0,0,0,0.2)', 
-      padding: '15px 20px', 
-      width: 'auto', 
+    dropdownMenuRight: {
+      position: 'absolute',
+      top: '100%',
+      right: '0',
+      background: '#1e3a8a',
+      borderRadius: '8px',
+      boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+      padding: '15px 20px',
+      width: 'auto',
       minWidth: '500px', // sakto sa 2 cards
-      maxWidth: '90vw', 
+      maxWidth: '90vw',
       zIndex: 1000,
       whiteSpace: 'normal'
     },
-  
+
     // PARA SA CATEGORIES - SOBRANG LAPAD
-    dropdownMenuRightWide: { 
-      position: 'absolute', 
-      top: '100%', 
-      right: '0', 
-      background: '#1e3a8a', 
-      borderRadius: '8px', 
-      boxShadow: '0 10px 25px rgba(0,0,0,0.2)', 
-      padding: '15px 0', 
-      width: 'auto', 
+    dropdownMenuRightWide: {
+      position: 'absolute',
+      top: '100%',
+      right: '0',
+      background: '#1e3a8a',
+      borderRadius: '8px',
+      boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+      padding: '15px 0',
+      width: 'auto',
       minWidth: '850px', // MALAPAD
-      maxWidth: '95vw', 
-      maxHeight: '70vh', 
-      overflowY: 'auto', 
+      maxWidth: '95vw',
+      maxHeight: '70vh',
+      overflowY: 'auto',
       zIndex: 1000,
       whiteSpace: 'normal'
     },
-  
+
     // PARA SA CONTACT
-    dropdownMenuCentered: { 
-      position: 'absolute', 
-      top: '100%', 
-      left: '50%', 
+    dropdownMenuCentered: {
+      position: 'absolute',
+      top: '100%',
+      left: '50%',
       transform: 'translateX(-50%)',
-      background: '#1e3a8a', 
-      borderRadius: '8px', 
-      boxShadow: '0 10px 25px rgba(0,0,0,0.2)', 
-      padding: '15px 20px', 
-      minWidth: '280px', 
+      background: '#1e3a8a',
+      borderRadius: '8px',
+      boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+      padding: '15px 20px',
+      minWidth: '280px',
       zIndex: 1000,
       whiteSpace: 'normal'
     },
@@ -508,16 +508,39 @@ function LandingPage() {
     <div style={styles.body} className="anim-fade-in landing-page-wrapper">
 
       <style>{`
-      @media (max-width: 900px) {
-        header { flex-direction: row !important; padding: 10px 15px !important; justify-content: center !important; flex- }
-        .nav-item-dropdown { position: static !important; width: 100% !important; min-width: 100% !important; }
-        .hover-underline-link:hover { text-decoration: underline !important; }
-      }
-    
-      /* Hide the scrollbar exclusively for the Landing Page wrapper */
-      .landing-page-wrapper::-webkit-scrollbar { display: none; }
-      .landing-page-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
-    `}</style>
+  @media (max-width: 768px) {
+    header { 
+      flex-direction: row !important; 
+      padding: 10px 15px !important; 
+      justify-content: center !important; 
+      flex-wrap: wrap !important; 
+    }
+
+    /* ITO YUNG BAGO PARA SA CATEGORIES SA CP */
+    .nav-item-dropdown { 
+      position: fixed !important;
+      top: 60px !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100vw !important;
+      min-width: 100vw !important;
+      max-width: 100vw !important;
+      transform: none !important;
+      border-radius: 0 !important;
+      border-top: 3px solid #fbbf24;
+      z-index: 9999 !important;
+      max-height: 80vh !important; /* para may scroll pag mahaba */
+      overflow-y: auto !important;
+    }
+
+    .hover-underline-link:hover { text-decoration: underline !important; }
+  }
+
+  /* ITO YUNG LUMA MO - WAG BUBURAHIN */
+  /* Hide the scrollbar exclusively for the Landing Page wrapper */
+  .landing-page-wrapper::-webkit-scrollbar { display: none; }
+  .landing-page-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
+`}</style>
 
       {/* ===== HEADER PUTI ===== */}
       <header style={{
@@ -646,7 +669,7 @@ function LandingPage() {
         <div style={styles.navItemWhite} onClick={(e) => { e.stopPropagation(); toggleDropdown('categories') }}>
           Categories and Codes ▼
           {showDropdown === 'categories' && (
-            <div style={styles.dropdownMenuRight} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
+            <div style={styles.dropdownMenuRightWide} className="anim-slide-up nav-item-dropdown" onClick={(e) => e.stopPropagation()}>
               {navConfig.categoriesAndCodes.map((cat, i) => (
                 <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                   {/* ROW */}
