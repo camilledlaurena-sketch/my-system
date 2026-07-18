@@ -513,16 +513,63 @@ function LandingPage() {
       overflow-x: hidden !important; /* para walang horizontal scroll */
     }
 
-    header { 
-      flex-direction: column !important; 
-      padding: 10px 15px !important; 
+    /* HEADER */
+    header {
+      flex-direction: column !important;
+      padding: 10px 15px !important;
       align-items: center !important;
       gap: 10px !important;
     }
-    
-    /* ... yung iba mong code ... */
+    header > div:last-child { 
+      width: 100% !important; 
+      justify-content: center !important; 
+    }
+
+    /* NAVBAR */
+    nav {
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      padding: 8px 5px !important;
+      gap: 5px 15px !important;
+    }
+    nav > div { font-size: 12px !important; padding: 5px 8px !important; }
+
+    /* DROPDOWN CATEGORIES */
+    .nav-item-dropdown { 
+      position: fixed !important;
+      top: 120px !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100vw !important;
+      min-width: 100vw !important;
+      max-width: 100vw !important;
+      transform: none !important;
+      border-radius: 0 !important;
+      border-top: 3px solid #fbbf24;
+      z-index: 9999 !important;
+      max-height: 70vh !important;
+      overflow-y: auto !important;
+    }
+
+    /* SLIDESHOW / BANNER PIC */
+    .landing-page-wrapper img {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 300px !important;
+      object-fit: cover !important;
+    }
+
+    /* HOME SECTIONS - para mag 1 column */
+    .home-section, .card-grid {
+      flex-direction: column !important;
+      padding: 15px 10px !important;
+    }
+    .home-section > div, .card {
+      width: 100% !important;
+    }
   }
 
+  /* Hide scrollbar */
   .landing-page-wrapper::-webkit-scrollbar { display: none; }
   .landing-page-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
 `}</style>
