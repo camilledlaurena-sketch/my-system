@@ -320,18 +320,33 @@ function LandingPage() {
       background: '#1e3a8a', 
       borderRadius: '8px', 
       boxShadow: '0 10px 25px rgba(0,0,0,0.2)', 
+      padding: '15px 20px', 
+      width: 'auto', 
+      minWidth: '500px', // sakto sa 2 cards
+      maxWidth: '90vw', 
+      zIndex: 1000,
+      whiteSpace: 'normal'
+    },
+  
+    // PARA SA CATEGORIES - SOBRANG LAPAD
+    dropdownMenuRightWide: { 
+      position: 'absolute', 
+      top: '100%', 
+      right: '0', 
+      background: '#1e3a8a', 
+      borderRadius: '8px', 
+      boxShadow: '0 10px 25px rgba(0,0,0,0.2)', 
       padding: '15px 0', 
       width: 'auto', 
       minWidth: '850px', // MALAPAD
       maxWidth: '95vw', 
       maxHeight: '70vh', 
       overflowY: 'auto', 
-      scrollbarWidth: 'none', 
       zIndex: 1000,
       whiteSpace: 'normal'
     },
   
-    // PARA SA CONTACT: MALIIT AT NAKA GITNA
+    // PARA SA CONTACT
     dropdownMenuCentered: { 
       position: 'absolute', 
       top: '100%', 
@@ -341,12 +356,7 @@ function LandingPage() {
       borderRadius: '8px', 
       boxShadow: '0 10px 25px rgba(0,0,0,0.2)', 
       padding: '15px 20px', 
-      width: 'auto', 
-      minWidth: '280px', // MALIIT LANG
-      maxWidth: '400px', 
-      maxHeight: '85vh', 
-      overflowY: 'auto', 
-      scrollbarWidth: 'none', 
+      minWidth: '280px', 
       zIndex: 1000,
       whiteSpace: 'normal'
     },
