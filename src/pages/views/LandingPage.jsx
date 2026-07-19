@@ -183,6 +183,7 @@ function LandingPage() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  
 
   // Securely redirect based on AuthContext state
   useEffect(() => {
@@ -234,274 +235,33 @@ function LandingPage() {
   };
 
   const styles = {
-    body: {
-      fontFamily: 'Poppins, sans-serif',
-      background: '#f4f7fc',
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      overflowX: 'auto',
-      overflowY: 'auto'
-    },
-    header: {
-      background: '#ffffff',
-      padding: '15px 40px',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
-      borderBottom: '4px solid #fbbf24',
-      position: 'relative',
-      zIndex: 10,
-      flexWrap: 'wrap',
-      flexDirection: 'row'
-    },
-    logoTitle: {
-      color: '#1e3a8a',
-      margin: 0,
-      fontSize: '24px',
-      fontWeight: '900',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '10px',
-      minWidth: 'max-content'
-    },
-    navContainer: {
-      display: 'flex',
-      gap: '35px',
-      alignItems: 'center',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      flex: 1,
-      flexDirection: 'row',
-      position: 'relative' // <-- DAGDAG MO TO
-    },
-    mobileMenuBtn: {
-      display: 'none',
-      background: 'none',
-      border: 'none',
-      fontSize: '28px',
-      cursor: 'pointer',
-      color: '#1e3a8a'
-    },
-    navItem: {
-      position: 'relative',
-      cursor: 'pointer',
-      color: '#1e3a8a',
-      fontWeight: 'bold',
-      fontSize: '14px',
-      padding: '10px 12px',
-      userSelect: 'none'
-    },
-
-    dropdownMenu: {
-      position: 'absolute',
-      top: '100%',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      background: '#1e3a8a',
-      borderRadius: '8px',
-      boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-      padding: '15px 20px',
-      width: 'auto',
-      minWidth: '250px',
-      maxWidth: '500px',
-      maxHeight: '85vh',
-      overflowY: 'auto',
-      scrollbarWidth: 'none',
-      zIndex: 1000,
-      whiteSpace: 'normal'
-    },
-
-    dropdownMenuRight: {
-      position: 'absolute',
-      top: '100%',
-      right: '0',
-      background: '#1e3a8a',
-      borderRadius: '8px',
-      boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-      padding: '15px 20px',
-      width: 'auto',
-      minWidth: '500px', // sakto sa 2 cards
-      maxWidth: '90vw',
-      zIndex: 1000,
-      whiteSpace: 'normal'
-    },
-
-    // PARA SA CATEGORIES - SOBRANG LAPAD
-    dropdownMenuRightWide: {
-      position: 'absolute',
-      top: '100%',
-      right: '0',
-      background: '#1e3a8a',
-      borderRadius: '8px',
-      boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-      padding: '15px 0',
-      width: 'auto',
-      minWidth: '850px', // MALAPAD
-      maxWidth: '95vw',
-      maxHeight: '70vh',
-      overflowY: 'auto',
-      zIndex: 1000,
-      whiteSpace: 'normal'
-    },
-
-    // PARA SA CONTACT
-    dropdownMenuCentered: {
-      position: 'absolute',
-      top: '100%',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      background: '#1e3a8a',
-      borderRadius: '8px',
-      boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-      padding: '15px 20px',
-      minWidth: '280px',
-      zIndex: 1000,
-      whiteSpace: 'normal'
-    },
-
-    // BAGONG STYLE: PARA MAGKATABI YUNG 2 PROJECTS
-    cardContainer: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr', // 2 columns
-      gap: '15px',
-      marginTop: '10px'
-    },
-
-    dropdownSection: {
-      padding: '15px 20px',
-      borderBottom: '1px solid rgba(255,255,255,0.1)',
-      color: '#ffffff'
-    },
-    videoPlaceholder: {
-      background: '#94a3b8',
-      height: '120px',
-      borderRadius: '6px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: '#1e293b',
-      fontSize: '14px',
-      marginTop: '10px',
-      fontWeight: 'bold'
-    },
-    placeholderText: {
-      fontSize: '13px',
-      margin: '5px 0 0 0',
-      color: '#cbd5e1'
-    },
-
-    imageCardPlaceholder: {
-      background: '#f1f5f9',
-      padding: '15px',
-      borderRadius: '6px',
-      color: '#334155'
-    },
-    eventCard: {
-      background: 'rgba(255,255,255,0.1)',
-      padding: '15px',
-      margin: '10px 15px',
-      borderRadius: '6px',
-      color: '#ffffff'
-    },
-    dropdownItem: {
-      padding: '12px 20px',
-      color: '#ffffff',
-      fontSize: '14px',
-      borderBottom: '1px solid rgba(255,255,255,0.1)',
-      cursor: 'pointer',
-      textAlign: 'left',
-      whiteSpace: 'normal',
-      wordWrap: 'break-word'
-    },
-    accordionContent: {
-      marginTop: '12px',
-      padding: '15px',
-      background: 'rgba(0,0,0,0.3)',
-      borderRadius: '6px',
-      borderLeft: '3px solid #fbbf24'
-    },
-    navButtons: {
-      display: 'flex',
-      gap: '10px',
-      minWidth: 'max-content'
-    },
-
-    // === ITO DIN INAYOS KO ===
-    navItemWhite: {
-      color: '#fff',
-      fontSize: '15px',
-      fontWeight: '700',
-      cursor: 'pointer',
-      position: 'relative', // <-- dito mag-aanchor yung dropdown
-      padding: '15px 20px', // <-- ginawa kong may horizontal padding
-      transition: 'opacity 0.2s',
-      display: 'block' // <-- para sakop nya buong area ng button
-    },
-
-    main: {
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: '0',
-      zIndex: 1,
-      position: 'relative'
-    },
-    heroTitle: {
-      color: '#1e3a8a',
-      fontSize: '48px',
-      fontWeight: '900',
-      marginBottom: '20px'
-    },
-    heroSub: {
-      color: '#475569',
-      fontSize: '18px',
-      maxWidth: '600px',
-      marginBottom: '40px',
-      lineHeight: '1.6'
-    },
-    btnGroup: {
-      display: 'flex',
-      gap: '20px',
-      justifyContent: 'center'
-    },
-    btnPrimary: {
-      background: '#fbbf24',
-      color: '#1e3a8a',
-      padding: '15px 40px',
-      borderRadius: '8px',
-      textDecoration: 'none',
-      fontWeight: 'bold',
-      border: 'none',
-      cursor: 'pointer',
-      fontSize: '18px',
-      boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
-    },
-    btnSecondary: {
-      background: '#ffffff',
-      color: '#1e3a8a',
-      padding: '15px 40px',
-      borderRadius: '8px',
-      textDecoration: 'none',
-      fontWeight: 'bold',
-      border: '2px solid #1e3a8a',
-      cursor: 'pointer',
-      fontSize: '18px'
-    },
-    infoBox: {
-      background: '#f8fafc',
-      padding: '20px',
-      borderRadius: '12px',
-      borderLeft: '5px solid #fbbf24',
-      margin: '10px',
-      textAlign: 'left',
-      color: '#334155',
-      fontSize: '14px',
-      lineHeight: '1.6'
-    }
+    body: { fontFamily: 'Poppins, sans-serif', background: '#f4f7fc', minHeight: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'auto', overflowY: 'auto' },
+    header: { background: '#ffffff', padding: '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', borderBottom: '4px solid #fbbf24', position: 'relative', zIndex: 10, flexWrap: 'wrap', flexDirection: 'row' },
+    logoTitle: { color: '#1e3a8a', margin: 0, fontSize: '24px', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '10px', minWidth: 'max-content' },
+    navContainer: { display: 'flex', gap: '35px', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center', flex: 1, flexDirection: 'row', position: 'relative' },
+    mobileMenuBtn: { display: 'none', background: 'none', border: 'none', fontSize: '28px', cursor: 'pointer', color: '#1e3a8' },
+    navItem: { position: 'relative', cursor: 'pointer', color: '#1e3a8a', fontWeight: 'bold', fontSize: '14px', padding: '10px 12px', userSelect: 'none' },
+    dropdownMenu: { position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', background: '#1e3a8a', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', padding: '15px 20px', width: 'auto', minWidth: '250px', maxWidth: '500px', maxHeight: '85vh', overflowY: 'auto', scrollbarWidth: 'none', zIndex: 1000, whiteSpace: 'normal'},   
+    dropdownMenuRight: { position: 'absolute', top: '100%', right: '0', background: '#1e3a8a', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', padding: '15px 20px', width: 'auto', minWidth: '500px',  maxWidth: '90vw', zIndex: 1000, whiteSpace: 'normal' },
+    dropdownMenuRightWide: { position: 'absolute', top: '100%', right: '0', background: '#1e3a8a', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', padding: '15px 0', width: 'auto', minWidth: '850px', maxWidth: '95vw', maxHeight: '70vh', overflowY: 'auto', zIndex: 1000, whiteSpace: 'normal' },
+    dropdownMenuCentered: { position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', background: '#1e3a8a', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', padding: '15px 20px', minWidth: '280px', zIndex: 1000, whiteSpace: 'normal' },
+    cardContainer: {display: 'grid',gridTemplateColumns: '1fr 1fr' }, 
+    dropdownSection: {padding: '15px 20px',borderBottom: '1px solid rgba(255,255,255,0.1)',color: '#ffffff' },
+    videoPlaceholder: { background: '#94a3b8', height: '120px', borderRadius: '6px', display: 'flex',alignItems: 'center',justifyContent: 'center',color: '#1e293b',fontSize: '14px',marginTop: '10px',fontWeight: 'bold' },
+    placeholderText: {fontSize: '13px',margin: '5px 0 0 0',color: '#cbd5e1'},
+    imageCardPlaceholder: {background: '#f1f5f9',padding: '15px',borderRadius: '6px',color: '#334155'}, 
+    eventCard: {background: 'rgba(255,255,255,0.1)',padding: '15px',margin: '10px 15px',borderRadius: '6px',color: '#fffff'}, 
+    dropdownItem: { padding: '12px 20px', color: '#ffffff', fontSize: '14px', borderBottom: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer', textAlign: 'left', whiteSpace: 'normal', wordWrap: 'break-word' },
+    accordionContent: { marginTop: '12px', padding: '15px', background: 'rgba(0,0,0,0.3)', borderRadius: '6px', borderLeft: '3px solid #fbbf24' },
+    navButtons: { display: 'flex', gap: '10px', minWidth: 'max-content' },
+    navItemWhite: { color: '#fff', fontSize: '15px', fontWeight: '700', cursor: 'pointer', position: 'relative',  padding: '15px 20px',  transition: 'opacity 0.2s', display: 'block' },
+    main: {flex: 1,display: 'flex',flexDirection: 'column',justifyContent: 'center',alignItems: 'center',padding: '0',zIndex: 1,position: 'relative'},
+    heroTitle: {color: '#1e3a8a',fontSize: '48px',fontWeight: '900',marginBottom: '20px'},
+    heroSub: {color: '#475569',fontSize: '18px',maxWidth: '600px',marginBottom: '40px',lineHeight: '1.6'},
+    btnGroup: { display: 'flex', gap: '20px', justifyContent: 'center' },
+    btnPrimary: { background: '#fbbf24', color: '#1e3a8a', padding: '15px 40px',borderRadius: '8px',textDecoration: 'none',fontWeight: 'bold',border: 'none',cursor: 'pointer',fontSize: '18px',boxShadow: '0 4px 6px rgba(0,0,0,0.1)' },
+    btnSecondary: {background: '#ffffff',color: '#1e3a8a',padding: '15px 40px',borderRadius: '8px',textDecoration: 'none',fontWeight: 'bold',border: '2px solid #1e3a8a',cursor: 'pointer',fontSize: '18px' },
+    infoBox: { background: '#f8fafc', padding: '20px', borderRadius: '12px', borderLeft: '5px solid #fbbf24', margin: '10px', textAlign: 'left', color: '#334155', fontSize: '14px', lineHeight: '1.6' }
   };
 
   return (
@@ -764,55 +524,190 @@ function LandingPage() {
       </main>
 
       {showLoginModal && (
-        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.6)', zIndex: 100, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px' }} onClick={() => setShowLoginModal(false)}>
-          <div style={{ background: '#ffffff', padding: '40px', borderRadius: '16px', width: '100%', maxWidth: '400px', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }} onClick={(e) => e.stopPropagation()} className="anim-slide-up">
-            <h2 style={{ color: '#1e3a8a', margin: '0 0 20px 0', fontSize: '24px', fontWeight: '900', textAlign: 'center' }}>Login</h2>
-            <form onSubmit={handleLogin}>
-              <div style={{ marginBottom: '15px' }}>
-                <label style={{ display: 'block', marginBottom: '8px', color: '#1e3a8a', fontWeight: 'bold', fontSize: '14px' }}>Email Address</label>
-                <input type="email" style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', boxSizing: 'border-box', fontSize: '15px', background: '#f8fafc' }} value={email} onChange={(e) => setEmail(e.target.value)} required />
-              </div>
-              <div style={{ marginBottom: '15px' }}>
-                <label style={{ display: 'block', marginBottom: '8px', color: '#1e3a8a', fontWeight: 'bold', fontSize: '14px' }}>Password</label>
-                <div style={{ position: 'relative' }}>
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #cbd5e1', boxSizing: 'border-box', fontSize: '15px', background: '#f8fafc', paddingRight: '40px' }}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                  <span
-                    onClick={() => setShowPassword(!showPassword)}
-                    style={{ position: 'absolute', right: '12px', top: '10px', cursor: 'pointer', fontSize: '18px', userSelect: 'none' }}
-                    title={showPassword ? "Hide Password" : "Show Password"}
-                  >
-                    {showPassword ? '👁️' : '🔒'}
-                  </span>
-                </div>
-                <div
-                  style={{ textAlign: 'right', marginTop: '8px', fontSize: '13px', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold' }}
-                  onClick={handleForgotPassword}
-                >
-                  Forgot Password?
-                </div>
-              </div>
-              <button type="submit" style={{ background: '#fbbf24', color: '#1e3a8a', padding: '14px', border: 'none', borderRadius: '8px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', width: '100%', marginTop: '5px' }} className="hover-btn">Login Securely</button>
-              <div style={{ marginTop: '20px', textAlign: 'center', fontSize: '14px', color: '#475569' }}>
-                No account? <span style={{ color: '#1e3a8a', fontWeight: 'bold', cursor: 'pointer' }}
-                  className="hover-underline-link"
-                  onClick={() => { setShowLoginModal(false); setShowRegisterModal(true); }}>Register</span>
-              </div>
-            </form>
-            <button style={{
-              position: 'absolute', top: '15px', right: '15px', background: 'none',
-              border: 'none', fontSize: '20px', cursor: 'pointer', color: '#64748b'
+  <div style={{
+    position: 'fixed',
+    top: 0, left: 0, right: 0, bottom: 0,
+    background: 'rgba(0,0,0,0.7)',
+    backdropFilter: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 9999,
+    padding: '20px'
+  }} onClick={() => setShowLoginModal(false)}>
+    
+    <div style={{
+      background: 'rgba(255, 255, 255, 0.95)', // WHITE GLASS NA
+      backdropFilter: 'blur(25px)',
+      borderRadius: '24px',
+      padding: '45px 40px',
+      width: '100%',
+      maxWidth: '440px',
+      boxShadow: '0 25px 70px rgba(0,0,0,0.4)',
+      border: '1px solid rgba(37, 99, 235, 0.2)', // blue border
+      position: 'relative'
+    }} onClick={(e) => e.stopPropagation()}>
+
+      {/* CLOSE BUTTON */}
+      <button style={{
+        position: 'absolute',
+        top: '20px',
+        right: '20px',
+        background: 'rgba(0,0,0,0.05)',
+        border: 'none',
+        borderRadius: '50%',
+        width: '36px',
+        height: '36px',
+        cursor: 'pointer',
+        color: '#1e40af', // BLUE
+        fontSize: '20px',
+        fontWeight: 'bold',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transition: 'all 0.2s'
+      }} onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.1)'}
+         onMouseOut={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+         onClick={() => setShowLoginModal(false)}>✕</button>
+
+      {/* TITLE */}
+      <div style={{ textAlign: 'center', marginBottom: '35px' }}>
+        <h2 style={{ 
+          color: '#1e40af', // BLUE
+          fontSize: '32px', 
+          fontWeight: '800', 
+          marginBottom: '8px'
+        }}>Welcome Back</h2>
+      </div>
+
+      <form onSubmit={handleLogin}>
+        {/* EMAIL - FLOATING LABEL */}
+        <div style={{ marginBottom: '22px', position: 'relative' }}>
+          <input 
+            type="email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)}
+            required 
+            style={{ 
+              width: '100%', 
+              padding: '18px 18px 10px 18px', 
+              borderRadius: '14px', 
+              border: '2px solid #e2e8f0', 
+              fontSize: '15px', 
+              outline: 'none',
+              background: '#f8fafc',
+              color: '#1e293b', // BLACK TEXT
+              transition: 'all 0.3s'
+            }} 
+            onFocus={(e) => {e.target.style.borderColor = '#2563eb'; e.target.style.background = '#fff'}}
+            onBlur={(e) => {e.target.style.borderColor = '#e2e8f0'; e.target.style.background = '#f8fafc'}}
+          />
+          <label style={{ 
+            position: 'absolute',
+            left: '18px',
+            top: email ? '8px' : '50%', // aakyat pag may laman
+            transform: email ? 'translateY(0)' : 'translateY(-50%)',
+            fontSize: email ? '12px' : '15px',
+            color: email ? '#2563eb' : '#64748b',
+            fontWeight: '600',
+            pointerEvents: 'none',
+            transition: 'all 0.2s ease'
+          }}>
+            Email Address
+          </label>
+        </div>
+
+        {/* PASSWORD - FLOATING LABEL */}
+        <div style={{ marginBottom: '12px', position: 'relative' }}>
+          <input 
+            type={showPassword ? "text" : "password"}
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)}
+            required 
+            style={{ 
+              width: '100%', 
+              padding: '18px 50px 10px 18px', 
+              borderRadius: '14px', 
+              border: '2px solid #e2e8f0', 
+              fontSize: '15px', 
+              outline: 'none',
+              background: '#f8fafc',
+              color: '#1e293b'
+            }} 
+            onFocus={(e) => {e.target.style.borderColor = '#2563eb'; e.target.style.background = '#fff'}}
+            onBlur={(e) => {e.target.style.borderColor = '#e2e8f0'; e.target.style.background = '#f8fafc'}}
+          />
+          <label style={{ 
+            position: 'absolute',
+            left: '18px',
+            top: password ? '8px' : '50%',
+            transform: password ? 'translateY(0)' : 'translateY(-50%)',
+            fontSize: password ? '12px' : '15px',
+            color: password ? '#2563eb' : '#64748b',
+            fontWeight: '600',
+            pointerEvents: 'none',
+            transition: 'all 0.2s ease'
+          }}>
+            Password
+          </label>
+          
+          {/* EYE ICON */}
+          <span 
+            onClick={() => setShowPassword(!showPassword)} 
+            style={{ 
+              position: 'absolute', 
+              right: '16px', 
+              top: '50%',
+              transform: 'translateY(-50%)',
+              cursor: 'pointer', 
+              fontSize: '22px', 
+              userSelect: 'none',
+              transition: 'transform 0.2s'
             }}
-              onClick={() => setShowLoginModal(false)}>✕</button>
+            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(-50%) scale(1)'}
+          >
+            {showPassword ? '👁️' : '🙈'}
+          </span>
+          
+          <div style={{ textAlign: 'right', marginTop: '12px', fontSize: '14px', color: '#2563eb', cursor: 'pointer', fontWeight: '600' }} onClick={handleForgotPassword}>
+            Forgot Password?
           </div>
         </div>
-      )
-      }
+
+        {/* BUTTON - YELLOW WITH HOVER */}
+        <button type="submit" style={{ 
+          background: 'linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%)', // YELLOW
+          color: '#1e40af', // BLUE TEXT
+          padding: '16px', 
+          border: 'none', 
+          borderRadius: '14px', 
+          fontSize: '17px', 
+          fontWeight: '800', 
+          cursor: 'pointer', 
+          width: '100%', 
+          marginTop: '20px',
+          boxShadow: '0 8px 25px rgba(251,191,36,0.4)',
+          transition: 'all 0.2s'
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)';
+          e.currentTarget.style.boxShadow = '0 12px 30px rgba(251,191,36,0.5)';
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 8px 25px rgba(251,191,36,0.4)';
+        }}>
+          Login
+        </button>
+
+        <div style={{ marginTop: '25px', textAlign: 'center', fontSize: '14px', color: '#64748b' }}>
+          No account? <span style={{ color: '#2563eb', fontWeight: '700', cursor: 'pointer' }} onClick={() => { setShowLoginModal(false); setShowRegisterModal(true); }}>Register here</span>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
 
       {showRegisterModal && (
         <div
