@@ -143,7 +143,7 @@ function SoloParentPage() {
                   <h3 style={styles.idTitle}>Solo Parent Identification Card</h3>
                 </div>
                 <div>
-                  <p style={styles.idGovText} style={{ textAlign: 'right', opacity: 0.8, fontSize: '11px', margin: '0 0 4px 0' }}>ID Number</p>
+                  <p style={{...styles.idGovText, textAlign: 'right', opacity: 0.8, fontSize: '10px', margin: '0 0 4px 0' }}>ID Number</p>
                   <div style={styles.idNumber}>{soloParentId}</div>
                 </div>
               </div>
